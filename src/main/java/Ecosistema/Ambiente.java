@@ -10,6 +10,12 @@ class Ambiente {
         this.terreno = terreno;
         this.recursosDisponibles = recursosDisponibles;
     }
+    void crecer() {
+        // Implementación del crecimiento de la población
+    }
 
+    void reproducirse() {
+        // Implementación de la reproducción
+    }
     // Métodos para interactuar con el ambiente
 }

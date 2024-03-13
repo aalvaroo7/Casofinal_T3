@@ -8,13 +8,14 @@ class Planta extends Organismo {
     void competirPorRecursos() {
         // Implementación de la competencia por recursos para las plantas
     }
-
-    @Override
-    void reproducirse() {
-        // Implementación de la reproducción para las plantas
-    }
-
     void polinizar() {
         // Implementación de la polinización
+    }
+    void crecer() {
+        // Implementación del crecimiento de la población
+    }
+
+    void reproducirse() {
+        // Implementación de la reproducción
     }
 }
