@@ -8,13 +8,18 @@ class Animal extends Organismo {
     void competirPorRecursos() {
         // Implementación de la competencia por recursos para los animales
     }
-
-    @Override
-    void reproducirse() {
-        // Implementación de la reproducción para los animales
-    }
-
     void predar() {
         // Implementación de la predación
     }
+        void crecer() {
+            // Implementación del crecimiento de la población
+        }
+
+        void reproducirse() {
+            // Implementación de la reproducción
+        }
+
+
 }
+
+

@@ -18,4 +18,12 @@ class Ambiente {
         // Implementación de la reproducción
     }
     // Métodos para interactuar con el ambiente
+
+    void eventoAleatorio() {
+        // Implementación de eventos aleatorios que pueden afectar a las poblaciones
+    }
+
+    void calcularEstadisticas() {
+        // Implementación de cálculo y presentación de estadísticas sobre la salud del ecosistema y las tendencias poblacionales
+    }
 }
