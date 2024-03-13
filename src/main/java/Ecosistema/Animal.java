@@ -18,8 +18,6 @@ class Animal extends Organismo {
         void reproducirse() {
             // Implementación de la reproducción
         }
-
-
 }
 
 
