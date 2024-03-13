@@ -1,20 +1,20 @@
 package Ecosistema;
-class Planta extends Organismo {
-    Planta(String posicion, int salud, int edad, boolean estadoReproductivo) {
+class Animal extends Organismo {
+    Animal(String posicion, int salud, int edad, boolean estadoReproductivo) {
         super(posicion, salud, edad, estadoReproductivo);
     }
 
     @Override
     void competirPorRecursos() {
-        // Implementación de la competencia por recursos para las plantas
+        // Implementación de la competencia por recursos para los animales
     }
 
     @Override
     void reproducirse() {
-        // Implementación de la reproducción para las plantas
+        // Implementación de la reproducción para los animales
     }
 
-    void polinizar() {
-        // Implementación de la polinización
+    void predar() {
+        // Implementación de la predación
     }
 }
