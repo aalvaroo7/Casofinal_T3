@@ -1,4 +1,5 @@
 package Ecosistema;
+
 abstract class Organismo {
     String posicion;
     int salud;
@@ -13,6 +14,6 @@ abstract class Organismo {
     }
 
     // Métodos abstractos para ser implementados por las subclases
-    abstract void competirPorRecursos();
+    abstract void competirPorRecursos(Ambiente ambiente);
     abstract void reproducirse();
 }

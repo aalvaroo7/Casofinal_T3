@@ -4,7 +4,6 @@ class Planta extends Organismo {
         super(posicion, salud, edad, estadoReproductivo);
     }
 
-    @Override
     void competirPorRecursos() {
         // Implementación de la competencia por recursos para las plantas
     }
