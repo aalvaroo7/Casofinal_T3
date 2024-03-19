@@ -24,6 +24,9 @@ class Ambiente {
                 // Desastre natural
                 System.out.println("Ha ocurrido un desastre natural, disminuir la población.");
                 // Aquí puedes agregar el código para disminuir la población
+                if (!this.organismos.isEmpty()) {
+                    this.organismos.remove(0); // eliminar el primer organismo de la lista
+                }
                 break;
             case 1:
                 // Enfermedad
