@@ -41,19 +41,22 @@ class Ambiente {
     void calcularEstadisticas() {
         int poblacionTotal = 0;
         int saludTotal = 0;
+        int edadTotal = 0;
         int cantidadOrganismos = 0;
 
-        // Iterar sobre la lista de organismos en el ambiente
         for (Organismo organismo : this.organismos) {
             poblacionTotal++;
             saludTotal += organismo.salud;
+            edadTotal += organismo.edad;
             cantidadOrganismos++;
         }
 
         int saludPromedio = saludTotal / cantidadOrganismos;
+        int edadPromedio = edadTotal / cantidadOrganismos;
 
         System.out.println("Población total: " + poblacionTotal);
         System.out.println("Salud promedio: " + saludPromedio);
+        System.out.println("Edad promedio: " + edadPromedio);
         System.out.println("Recursos disponibles: " + this.recursosDisponibles);
     }
 }
