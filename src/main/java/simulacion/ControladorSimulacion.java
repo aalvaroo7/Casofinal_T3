@@ -1,4 +1,6 @@
 package simulacion;
+import Ecosistema.Organismo;
+import Ecosistema.Animal;
 
 public class ControladorSimulacion {
     private simulacion simulation;
@@ -15,6 +17,7 @@ public class ControladorSimulacion {
             System.out.println("No se ha configurado un modelo personalizado.");
         }
     }
+
     public void handleConfigureSimulation(String initialConditions, int duration) {
         this.simulation = new simulacion(initialConditions, duration);
         System.out.println("Simulation configured with initial conditions: " + initialConditions + " and duration: " + duration);
@@ -49,8 +52,12 @@ public class ControladorSimulacion {
 
     public void visualizarDatos() {
         if (simulation != null) {
-            String datos = simulation.getDatos();
-            System.out.println(datos);
+            for (Organismo organismo : simulation.getAmbiente().organismos) {
+                if (organismo instanceof Animal) {
+                    Animal animal = (Animal) organismo;
+                    System.out.println("Animal: " + animal.getNombre());
+                }
+            }
         } else {
             System.out.println("No hay una simulación para visualizar sus datos.");
         }

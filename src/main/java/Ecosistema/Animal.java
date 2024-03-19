@@ -21,7 +21,10 @@ public class Animal extends Organismo {
     Animal(String posicion, int salud, int edad, boolean estadoReproductivo) {
         super(posicion, salud, edad, estadoReproductivo);
     }
-
+    @Override
+    public String toString() {
+        return "Animal: " + this.nombre;
+    }
     // Método para crear un animal aleatorio
     public static Animal crearAnimalAleatorio() {
         String nombre = nombresAnimales.get(random.nextInt(nombresAnimales.size())); // Genera un nombre aleatorio

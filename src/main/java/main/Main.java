@@ -1,7 +1,6 @@
 package main;
 
 import java.util.Scanner;
-
 import Ecosistema.Organismo;
 import Gestion_usuarios_ysimulciones.Autenticacion;
 import Gestion_usuarios_ysimulciones.Registro;

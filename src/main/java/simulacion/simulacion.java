@@ -1,8 +1,31 @@
 package simulacion;
 
-public class simulacion {
-    private boolean running;
+import Ecosistema.Ambiente;
 
+public class simulacion {
+        private boolean running;
+        private Ambiente ambiente; // Añade un campo para el ambiente
+
+        // Añade un constructor que acepta un objeto Ambiente
+        public simulacion(Ambiente ambiente) {
+            this.ambiente = ambiente;
+            this.running = false;
+        }
+
+        // Añade un constructor que acepta condiciones iniciales, duración y un objeto Ambiente
+        public simulacion(String initialConditions, int duration, Ambiente ambiente) {
+            this.ambiente = ambiente;
+        }
+
+        // Añade un getter para el ambiente
+        public Ambiente getAmbiente() {
+            return this.ambiente;
+        }
+
+        // Añade un setter para el ambiente
+        public void setAmbiente(Ambiente ambiente) {
+            this.ambiente = ambiente;
+        }
     public simulacion() {
         this.running = false;
     }
