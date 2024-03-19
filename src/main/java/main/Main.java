@@ -5,12 +5,21 @@ import Gestion_usuarios_ysimulciones.Autenticacion;
 import Gestion_usuarios_ysimulciones.Registro;
 import Gestion_usuarios_ysimulciones.Usuario;
 import simulacion.ControladorSimulacion;
+import Ecosistema.Ambiente;
+import Analisis_avanzado.Analisisavanzado;
 
 public class Main {
     public static void main(String[] args) {
         Autenticacion autenticacion = new Autenticacion();
         Registro registro = new Registro("registro.txt");
         ControladorSimulacion controladorSimulacion = new ControladorSimulacion();
+        Ambiente ambiente = new Ambiente("Clima", "Terreno", 100, null);
+        Analisisavanzado analisisAvanzado = new Analisisavanzado() {
+            @Override
+            public void resolverProblemasEspecificos() {
+                // Implementación de la resolución de problemas específicos
+            }
+        };
 
         Scanner scanner = new Scanner(System.in);
 
@@ -19,7 +28,8 @@ public class Main {
             System.out.println("2. Iniciar sesión");
             System.out.println("3. Configurar simulación");
             System.out.println("4. Iniciar simulación");
-            System.out.println("5. Salir");
+            System.out.println("5. Visualizar datos de la simulación");
+            System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
@@ -53,6 +63,9 @@ public class Main {
                     controladorSimulacion.handleStartSimulation();
                     break;
                 case 5:
+                    controladorSimulacion.visualizarDatos();
+                    break;
+                case 6:
                     System.out.println("Saliendo...");
                     scanner.close();
                     System.exit(0);

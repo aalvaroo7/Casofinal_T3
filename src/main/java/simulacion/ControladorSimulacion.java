@@ -46,4 +46,13 @@ public class ControladorSimulacion {
             System.out.println("No simulation is currently running.");
         }
     }
+
+    public void visualizarDatos() {
+        if (simulation != null) {
+            String datos = simulation.getDatos();
+            System.out.println(datos);
+        } else {
+            System.out.println("No hay una simulación para visualizar sus datos.");
+        }
+    }
 }

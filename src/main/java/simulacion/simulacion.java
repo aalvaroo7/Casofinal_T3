@@ -23,4 +23,10 @@ public class simulacion {
         this.running = false;
         System.out.println("fin simulacion.");
     }
+
+    public String getDatos() {
+        // This is just an example. You should replace this with code that
+        // generates a string containing the data of the simulation.
+        return "Datos de la simulación";
+    }
 }
