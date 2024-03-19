@@ -7,6 +7,9 @@ public class simulacion {
         this.running = false;
     }
 
+    public simulacion(String initialConditions, int duration) {
+    }
+
     public boolean isRunning() {
         return this.running;
     }
