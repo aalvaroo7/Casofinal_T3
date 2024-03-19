@@ -1,4 +1,6 @@
 package Ecosistema;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 class Animal extends Organismo {
@@ -50,5 +52,13 @@ class Animal extends Organismo {
         } else {
             System.out.println("El animal no está en estado reproductivo y no puede reproducirse.");
         }
+    }
+
+    public static List<Animal> generarAnimalesAleatorios(int cantidad) {
+        List<Animal> animales = new ArrayList<>();
+        for (int i = 0; i < cantidad; i++) {
+            animales.add(crearAnimalAleatorio());
+        }
+        return animales;
     }
 }
