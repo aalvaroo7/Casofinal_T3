@@ -1,11 +1,15 @@
 package Analisis_avanzado;
 import java.io.File;
 import java.io.IOException;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.plot.PlotOrientation;
 
-abstract class Analisisavanzado {
+public abstract class Analisisavanzado {
     // Herramientas avanzadas para resolver problemas específicos
     public abstract void resolverProblemasEspecificos();
-}
 
     // Métodos para visualizar los datos de la simulación
     public void visualizarDatos(DefaultCategoryDataset dataset) {
@@ -33,7 +37,4 @@ abstract class Analisisavanzado {
         System.out.println("Integrando nuevas funciones...");
         // Add your function integration code here
     }
-}
-
-public void main() {
 }
