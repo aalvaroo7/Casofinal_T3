@@ -1,5 +1,7 @@
 package Ecosistema;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -7,20 +9,30 @@ public class Animal extends Organismo {
     // Añade un generador de números aleatorios
     private static Random random = new Random();
 
+    // Añade una lista de nombres de animales
+    private static List<String> nombresAnimales = Arrays.asList("León", "Tigre", "Elefante", "Jirafa", "Hipopótamo", "Cebra", "Oso", "Lobo", "Zorro", "Canguro");
+
+    private String nombre; // Añade un campo para el nombre del animal
+
+    Animal(String nombre, String posicion, int salud, int edad, boolean estadoReproductivo) {
+        super(posicion, salud, edad, estadoReproductivo);
+        this.nombre = nombre; // Inicializa el nombre del animal
+    }
     Animal(String posicion, int salud, int edad, boolean estadoReproductivo) {
         super(posicion, salud, edad, estadoReproductivo);
     }
 
     // Método para crear un animal aleatorio
     public static Animal crearAnimalAleatorio() {
+        String nombre = nombresAnimales.get(random.nextInt(nombresAnimales.size())); // Genera un nombre aleatorio
         String posicion = "Posicion" + random.nextInt(100); // Genera una posición aleatoria
         int salud = random.nextInt(100); // Genera una salud aleatoria
         int edad = random.nextInt(100); // Genera una edad aleatoria
         boolean estadoReproductivo = random.nextBoolean(); // Genera un estado reproductivo aleatorio
 
-        return new Animal(posicion, salud, edad, estadoReproductivo);
+        return new Animal(nombre, posicion, salud, edad, estadoReproductivo);
     }
-
+    // Método para crear un animal aleatorio
     void competirPorRecursos(Ambiente ambiente) {
         if (ambiente.recursosDisponibles > 0) {
             ambiente.recursosDisponibles -= 1;
