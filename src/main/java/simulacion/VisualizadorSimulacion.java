@@ -5,11 +5,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class SimulationView extends Application {
-    private SimulationController controller;
+public class VisualizadorSimulacion extends Application {
+    private ControladorSimulacion controller;
 
-    public SimulationView() {
-        this.controller = new SimulationController();
+    public VisualizadorSimulacion() {
+        this.controller = new ControladorSimulacion();
     }
 
     @Override
