@@ -1,3 +1,4 @@
+package main;
 
 import Gestion_usuarios_ysimulciones.Autenticacion;
 import Gestion_usuarios_ysimulciones.Registro;
