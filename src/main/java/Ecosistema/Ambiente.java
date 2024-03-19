@@ -8,11 +8,11 @@ public class Ambiente {
     int recursosDisponibles;
     public List<Organismo> organismos; // Añadido para mantener una lista de organismos en el ambiente
 
-    public Ambiente(String clima, String terreno, int recursosDisponibles, List<Animal> organismos) {
+    public Ambiente(String clima, String terreno, int recursosDisponibles, List<? extends Organismo> organismos) {
         this.clima = clima;
         this.terreno = terreno;
         this.recursosDisponibles = recursosDisponibles;
-        this.organismos = organismos; // Inicializar la lista de organismos
+        this.organismos = (List<Organismo>) organismos; // Inicializar la lista de organismos
     }
 
     void calcularEstadisticas() {
