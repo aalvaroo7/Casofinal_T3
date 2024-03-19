@@ -6,9 +6,9 @@ public class Ambiente {
     String clima;
     String terreno;
     int recursosDisponibles;
-    List<Organismo> organismos; // Añadido para mantener una lista de organismos en el ambiente
+    public List<Organismo> organismos; // Añadido para mantener una lista de organismos en el ambiente
 
-    public Ambiente(String clima, String terreno, int recursosDisponibles, List<Organismo> organismos) {
+    public Ambiente(String clima, String terreno, int recursosDisponibles, List<Animal> organismos) {
         this.clima = clima;
         this.terreno = terreno;
         this.recursosDisponibles = recursosDisponibles;

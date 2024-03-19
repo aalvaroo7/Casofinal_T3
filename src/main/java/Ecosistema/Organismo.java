@@ -1,6 +1,6 @@
 package Ecosistema;
 
-abstract class Organismo {
+public abstract class Organismo {
     String posicion;
     int salud;
     int edad;

@@ -1,11 +1,15 @@
 package main;
 
 import java.util.Scanner;
+
+import Ecosistema.Organismo;
 import Gestion_usuarios_ysimulciones.Autenticacion;
 import Gestion_usuarios_ysimulciones.Registro;
 import Gestion_usuarios_ysimulciones.Usuario;
 import simulacion.ControladorSimulacion;
 import Ecosistema.Ambiente;
+import Ecosistema.Eventos;
+import Ecosistema.Animal;
 import Analisis_avanzado.Analisisavanzado;
 
 public class Main {
@@ -13,7 +17,8 @@ public class Main {
         Autenticacion autenticacion = new Autenticacion();
         Registro registro = new Registro("registro.txt");
         ControladorSimulacion controladorSimulacion = new ControladorSimulacion();
-        Ambiente ambiente = new Ambiente("Clima", "Terreno", 100, null);
+        Ambiente ambiente = new Ambiente("Clima", "Terreno", 100, Animal.generarAnimalesAleatorios(10)); // Generamos 10 animales aleatorios
+        Eventos eventos = new Eventos(); // Añadimos una instancia de Eventos
         Analisisavanzado analisisAvanzado = new Analisisavanzado() {
             @Override
             public void resolverProblemasEspecificos() {
@@ -68,7 +73,11 @@ public class Main {
                     break;
                 case 5:
                     controladorSimulacion.visualizarDatos();
-                    break;
+                    eventos.eventoAleatorio(ambiente); // Ejecutamos un evento aleatorio
+                    for (Organismo animal : ambiente.organismos) { // Mostramos los animales y cómo les afectan los eventos
+                        System.out.println("Animal: " + animal.toString());
+                    }
+                    break; // Añadido break que faltaba
                 case 6:
                     System.out.println("Saliendo...");
                     scanner.close();

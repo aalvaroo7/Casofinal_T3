@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class Animal extends Organismo {
+public class Animal extends Organismo {
     // Añade un generador de números aleatorios
     private static Random random = new Random();
 
