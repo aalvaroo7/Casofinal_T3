@@ -2,7 +2,19 @@ package simulacion;
 
 public class ControladorSimulacion {
     private simulacion simulation;
+    private ModeloPersonalizado modeloPersonalizado;
 
+    public void setModeloPersonalizado(ModeloPersonalizado modeloPersonalizado) {
+        this.modeloPersonalizado = modeloPersonalizado;
+    }
+
+    public void ejecutarModeloPersonalizado() {
+        if (modeloPersonalizado != null) {
+            modeloPersonalizado.ejecutarModelo();
+        } else {
+            System.out.println("No se ha configurado un modelo personalizado.");
+        }
+    }
     public void handleConfigureSimulation(String initialConditions, int duration) {
         this.simulation = new simulacion(initialConditions, duration);
         System.out.println("Simulation configured with initial conditions: " + initialConditions + " and duration: " + duration);

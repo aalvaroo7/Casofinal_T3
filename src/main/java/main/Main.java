@@ -1,50 +1,64 @@
 package main;
 
+import java.util.Scanner;
 import Gestion_usuarios_ysimulciones.Autenticacion;
 import Gestion_usuarios_ysimulciones.Registro;
+import Gestion_usuarios_ysimulciones.Usuario;
+import simulacion.ControladorSimulacion;
 
 public class Main {
-    private Autenticacion autenticacion;
-    private Registro registro;
+    public static void main(String[] args) {
+        Autenticacion autenticacion = new Autenticacion();
+        Registro registro = new Registro("registro.txt");
+        ControladorSimulacion controladorSimulacion = new ControladorSimulacion();
 
-    public Main(Autenticacion autenticacion, Registro registro) {
-        this.autenticacion = autenticacion;
-        this.registro = registro;
-    }
+        Scanner scanner = new Scanner(System.in);
 
-    public void iniciarSesion(String nombre, String contraseña) {
-        // Solicitar al usuario que introduzca su nombre y contraseña
-        // Utilizar el sistema de autenticación para verificar las credenciales del usuario
-        // Si las credenciales son correctas, permitir al usuario acceder al sistema
-        // Si las credenciales no son correctas, mostrar un mensaje de error
-        if (autenticacion.autenticarUsuario(nombre, contraseña)) {
-            System.out.println("User authenticated successfully.");
-        } else {
-            System.out.println("User authentication failed.");
-        }
-    }
+        while (true) {
+            System.out.println("1. Registrar usuario");
+            System.out.println("2. Iniciar sesión");
+            System.out.println("3. Configurar simulación");
+            System.out.println("4. Iniciar simulación");
+            System.out.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
 
-    public void configurarSimulacion() {
-        // Permitir al usuario configurar los parámetros de la simulación
-        // Guardar la configuración de la simulación en el sistema de registro
-        // This is just a placeholder, replace it with your actual code
-        System.out.println("Configuring the simulation...");
-    }
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // consume newline
 
-    public void iniciarSimulacion(String nombre, String contraseña) {
-        if (autenticacion.autenticarUsuario(nombre, contraseña)) {
-            // Start the simulation with the user-provided configuration
-            // This is just a placeholder, replace it with your actual simulation code
-            System.out.println("Starting the simulation...");
-
-            // After the simulation is completed, save the results to the Registro instance
-            // This is just a placeholder, replace it with your actual code to save the results
-            String detallesSimulacion = "Simulation details...";
-            registro.registrarSimulacion(detallesSimulacion);
-
-            System.out.println("Simulation completed and results saved.");
-        } else {
-            System.out.println("User authentication failed. Cannot start the simulation.");
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese nombre de usuario: ");
+                    String nombre = scanner.nextLine();
+                    System.out.print("Ingrese contraseña: ");
+                    String contraseña = scanner.nextLine();
+                    autenticacion.registrarUsuario(new Usuario(nombre, contraseña));
+                    break;
+                case 2:
+                    System.out.print("Ingrese nombre de usuario: ");
+                    nombre = scanner.nextLine();
+                    System.out.print("Ingrese contraseña: ");
+                    contraseña = scanner.nextLine();
+                    if (autenticacion.autenticarUsuario(nombre, contraseña)) {
+                        System.out.println("Usuario autenticado exitosamente.");
+                    } else {
+                        System.out.println("Autenticación fallida.");
+                    }
+                    break;
+                case 3:
+                    // Aquí deberías solicitar al usuario los parámetros de la simulación
+                    // y luego llamar a controladorSimulacion.handleConfigureSimulation con esos parámetros
+                    System.out.println("Configurando simulación...");
+                    break;
+                case 4:
+                    controladorSimulacion.handleStartSimulation();
+                    break;
+                case 5:
+                    System.out.println("Saliendo...");
+                    scanner.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Opción no válida.");
+            }
         }
     }
 }
