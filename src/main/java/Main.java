@@ -1,15 +1,12 @@
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import Gestion_usuarios_ysimulciones.Autenticacion;
+import Gestion_usuarios_ysimulciones.Registro;
 
 public class Main {
     private Autenticacion autenticacion;
     private Registro registro;
 
-    public InterfazUsuario(Autenticacion autenticacion, Registro registro) {
+    public Main(Autenticacion autenticacion, Registro registro) {
         this.autenticacion = autenticacion;
         this.registro = registro;
     }
