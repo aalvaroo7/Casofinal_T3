@@ -1,23 +1,26 @@
 package simulacion;
+
 import Ecosistema.Ambiente;
 import Ecosistema.Eventos;
+import simulacion.Simulacion;
+import simulacion.ModeloPersonalizado; // Import the ModeloPersonalizado interface
 
 public class ControladorSimulacion {
     private Simulacion simulation;
-    private Simulacion.simulacion.CustomModel customModel;
-    private ModeloPersonalizado modeloPersonalizado;
-    private Eventos eventos; // Añadimos una instancia de Eventos
+    private Simulacion.CustomModel customModel;
+    private ModeloPersonalizado modeloPersonalizado; // This is now correctly recognized
+    private Eventos eventos;
 
     public ControladorSimulacion() {
-        this.eventos = new Eventos(); // Inicializamos la instancia de Eventos
+        this.eventos = new Eventos();
     }
 
-    public void setCustomModel(Simulacion.simulacion.CustomModel customModel) {
+    public void setCustomModel(Simulacion.CustomModel customModel) {
         this.customModel = customModel;
     }
 
     public void handleConfigureSimulation(String initialConditions, int duration, Ambiente ambiente) {
-        this.simulation = new Simulacion(initialConditions, duration, ambiente);
+        this.simulation = new Simulacion(ambiente);
         System.out.println("Simulation configured with initial conditions: " + initialConditions + " and duration: " + duration);
     }
 
@@ -57,12 +60,12 @@ public class ControladorSimulacion {
 
     public void handleStartSimulation() {
         if (simulation == null) {
-            simulation = new Simulacion(); // Assuming Simulation is your simulation class
+            simulation = new Simulacion();
         }
         if (!simulation.isRunning()) {
             simulation.start();
             System.out.println("Simulation started.");
-            eventos.eventoAleatorio(simulation.getAmbiente()); // Llamamos al método eventoAleatorio cuando la simulación comienza
+            eventos.eventoAleatorio(simulation.getAmbiente());
         } else {
             System.out.println("A simulation is already running.");
         }
