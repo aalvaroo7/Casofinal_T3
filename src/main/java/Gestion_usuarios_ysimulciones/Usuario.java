@@ -9,7 +9,7 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    // Métodos de acceso y modificación para nombre y contraseña
+
     public String getNombre() {
         return nombre;
     }
