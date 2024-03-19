@@ -5,7 +5,9 @@ import Ecosistema.Ambiente;
 public class simulacion {
 
 
-
+    public interface CustomModel {
+        void executeModel(Ambiente ambiente);
+    }
         private boolean running;
         private Ambiente ambiente;
 

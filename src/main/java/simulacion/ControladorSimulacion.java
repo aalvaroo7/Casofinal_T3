@@ -1,13 +1,19 @@
 package simulacion;
 import Ecosistema.Ambiente;
 import Ecosistema.Eventos;
+
 public class ControladorSimulacion {
     private simulacion simulation;
+    private simulacion.simulacion.CustomModel customModel;
     private ModeloPersonalizado modeloPersonalizado;
     private Eventos eventos; // Añadimos una instancia de Eventos
 
     public ControladorSimulacion() {
         this.eventos = new Eventos(); // Inicializamos la instancia de Eventos
+    }
+
+    public void setCustomModel(simulacion.simulacion.CustomModel customModel) {
+        this.customModel = customModel;
     }
 
     public void handleConfigureSimulation(String initialConditions, int duration, Ambiente ambiente) {
@@ -59,6 +65,14 @@ public class ControladorSimulacion {
             eventos.eventoAleatorio(simulation.getAmbiente()); // Llamamos al método eventoAleatorio cuando la simulación comienza
         } else {
             System.out.println("A simulation is already running.");
+        }
+    }
+
+    public void executeCustomModel(Ambiente ambiente) {
+        if (customModel != null) {
+            customModel.executeModel(ambiente);
+        } else {
+            System.out.println("No custom model has been set.");
         }
     }
 }

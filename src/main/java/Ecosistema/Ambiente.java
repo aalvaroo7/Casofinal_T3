@@ -4,15 +4,10 @@ import java.util.Collection;
 import java.util.List;
 
 public class Ambiente {
-    private List<Organismo> organismos;
     String clima;
     String terreno;
     int recursosDisponibles;
-
-
-    public List<Organismo> getOrganismos() {
-        return this.organismos;
-    }
+    public List<Organismo> organismos; // Añadido para mantener una lista de organismos en el ambiente
 
     public Ambiente(String clima, String terreno, int recursosDisponibles, List<? extends Organismo> organismos) {
         this.clima = clima;
@@ -50,5 +45,9 @@ public class Ambiente {
                 ", terreno='" + terreno + '\'' +
                 ", recursosDisponibles=" + recursosDisponibles +
                 '}';
+    }
+
+    public Collection<Organismo> getOrganismos() {
+        return this.organismos;
     }
 }
