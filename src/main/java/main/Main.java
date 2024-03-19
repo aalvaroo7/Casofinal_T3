@@ -84,10 +84,14 @@ public class Main {
                     controladorSimulacion.handleStartSimulation();
                     break;
                 case 5:
+                case 5:
                     controladorSimulacion.visualizarDatos();
                     eventos.eventoAleatorio(ambiente); // Ejecutamos un evento aleatorio
                     for (Organismo animal : ambiente.organismos) { // Mostramos los animales y cómo les afectan los eventos
                         System.out.println("Animal: " + animal.toString());
+                        if (animal.danos) { // Verificamos si el animal ha sufrido un evento
+                            System.out.println("El animal ha sufrido un evento.");
+                        }
                     }
                     if (ambiente.organismos.size() >= 2) {
                         Animal animal1 = (Animal) ambiente.organismos.get(random.nextInt(ambiente.organismos.size()));
@@ -107,6 +111,9 @@ public class Main {
                     // Mostramos los animales y cómo les afectan los eventos
                     for (Organismo animal : ambiente.organismos) {
                         System.out.println("Animal: " + animal.toString());
+                        if (animal.danos) { // Verificamos si el animal ha sufrido un evento
+                            System.out.println("El animal ha sufrido un evento.");
+                        }
                     }
                     break;
                 case 6:

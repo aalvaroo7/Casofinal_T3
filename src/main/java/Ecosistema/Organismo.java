@@ -5,7 +5,7 @@ public abstract class Organismo {
     int salud;
     int edad;
     boolean estadoReproductivo;
-    protected boolean danos; // true si el organismo ha sufrido daños, false en caso contrario
+    public boolean danos; // true si el organismo ha sufrido daños, false en caso contrario
 
     Organismo(String posicion, int salud, int edad, boolean estadoReproductivo) {
         this.posicion = posicion;
