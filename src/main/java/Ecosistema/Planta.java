@@ -5,28 +5,43 @@ class Planta extends Organismo {
         super(posicion, salud, edad, estadoReproductivo);
     }
 
-    @Override
+
     void competirPorRecursos(Ambiente ambiente) {
-        // Implementación de la competencia por recursos para las plantas
-        System.out.println("La planta está compitiendo por recursos.");
+        if (ambiente.recursosDisponibles > 0) {
+            ambiente.recursosDisponibles -= 1; // la planta consume un recurso
+            this.salud += 1; // la salud de la planta aumenta
+            System.out.println("La planta está compitiendo por recursos y ha consumido un recurso.");
+        } else {
+            System.out.println("No hay recursos disponibles para que la planta compita.");
+        }
+    }
+    void polinizar(Ambiente ambiente) {
+        if (this.estadoReproductivo) {
+            if (ambiente.recursosDisponibles > 0) {
+                ambiente.recursosDisponibles -= 1; // la planta consume un recurso para polinizar
+                this.salud += 1; // la salud de la planta aumenta
+                System.out.println("La planta está polinizando y ha consumido un recurso.");
+            } else {
+                System.out.println("No hay recursos disponibles para que la planta polinice.");
+            }
+        } else {
+            System.out.println("La planta no está en estado reproductivo y no puede polinizar.");
+        }
     }
 
-    void competirPorRecursos() {
-        // Implementación de la competencia por recursos para las plantas
-        System.out.println("La planta está compitiendo por recursos.");
-    }
-
-    void polinizar() {
-        // Implementación de la polinización
-        System.out.println("La planta está polinizando.");
-    }
-
-    void crecer() {
-        // Implementación del crecimiento de la población
+    void crecer(Ambiente ambiente) {
         this.edad += 1;
         System.out.println("La planta ha crecido, incrementar la edad en uno.");
-    }
 
+        // Si la planta tiene suficiente salud, puede reproducirse y aumentar la población de plantas
+        if (this.salud > 0) {
+            this.reproducirse();
+            ambiente.organismos.add(new Planta(this.posicion, this.salud, this.edad, this.estadoReproductivo));
+            System.out.println("La planta ha reproducido, incrementar la población de la especie en uno.");
+        } else {
+            System.out.println("La planta no tiene suficiente salud para reproducirse.");
+        }
+    }
     void reproducirse() {
         // Implementación de la reproducción
         if (this.estadoReproductivo) {
