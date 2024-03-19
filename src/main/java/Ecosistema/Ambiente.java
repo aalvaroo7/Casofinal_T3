@@ -29,15 +29,22 @@ class Ambiente {
                 // Enfermedad
                 System.out.println("Ha surgido una enfermedad, disminuir la salud de los organismos.");
                 // Aquí puedes agregar el código para disminuir la salud de los organismos
+                for (Organismo organismo : this.organismos) {
+                    if (organismo.salud > 0) {
+                        organismo.salud -= 1; // disminuir la salud del organismo en uno
+                    }
+                }
                 break;
             case 2:
                 // Cambio climático
                 System.out.println("Ha ocurrido un cambio climático, afectar los recursos disponibles.");
                 // Aquí puedes agregar el código para afectar los recursos disponibles
+                if (this.recursosDisponibles > 0) {
+                    this.recursosDisponibles -= 1; // disminuir los recursos disponibles en uno
+                }
                 break;
         }
     }
-
     void calcularEstadisticas() {
         int poblacionTotal = 0;
         int saludTotal = 0;
