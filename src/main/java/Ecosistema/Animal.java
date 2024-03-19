@@ -32,7 +32,7 @@ public class Animal extends Organismo {
 
         return new Animal(nombre, posicion, salud, edad, estadoReproductivo);
     }
-    // Método para crear un animal aleatorio
+
     void competirPorRecursos(Ambiente ambiente) {
         if (ambiente.recursosDisponibles > 0) {
             ambiente.recursosDisponibles -= 1;
@@ -42,6 +42,7 @@ public class Animal extends Organismo {
             System.out.println("No hay recursos disponibles en el ambiente para que el animal compita.");
         }
     }
+
     void predar(Animal presa) {
         if (this.salud > presa.salud) {
             presa.salud -= 1;
@@ -51,6 +52,7 @@ public class Animal extends Organismo {
             System.out.println("El animal no tiene suficiente salud para predar a su presa.");
         }
     }
+
     void crecer() {
         this.edad += 1;
         System.out.println("El organismo ha crecido, incrementar la edad en uno.");
@@ -72,5 +74,14 @@ public class Animal extends Organismo {
             animales.add(crearAnimalAleatorio());
         }
         return animales;
+    }
+
+    // Getter y Setter para nombre
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
