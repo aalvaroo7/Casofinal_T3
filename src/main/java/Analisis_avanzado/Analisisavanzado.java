@@ -1,14 +1,11 @@
-
+package Analisis_avanzado;
 import java.io.File;
 import java.io.IOException;
 
-public class Analisisavanzado {
+abstract class Analisisavanzado {
     // Herramientas avanzadas para resolver problemas específicos
-    public void resolverProblemasEspecificos() {
-        // Implementación de la resolución de problemas específicos
-        System.out.println("Resolviendo problemas específicos...");
-        // Add your specific problem-solving code here
-    }
+    public abstract void resolverProblemasEspecificos();
+}
 
     // Métodos para visualizar los datos de la simulación
     public void visualizarDatos(DefaultCategoryDataset dataset) {
@@ -36,4 +33,7 @@ public class Analisisavanzado {
         System.out.println("Integrando nuevas funciones...");
         // Add your function integration code here
     }
+}
+
+public void main() {
 }
