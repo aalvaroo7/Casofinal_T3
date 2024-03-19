@@ -32,7 +32,6 @@ public class Main {
         controladorSimulacion.handleConfigureSimulation("Initial Conditions", 10, ambiente);
         Eventos eventos = new Eventos(); // Añadimos una instancia de Eventos
         Analisisavanzado analisisAvanzado = new Analisisavanzado() {
-            @Override
             public void resolverProblemasEspecificos() {
                 // Implementación de la resolución de problemas específicos
             }
