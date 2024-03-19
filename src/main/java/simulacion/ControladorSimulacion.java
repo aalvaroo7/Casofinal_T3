@@ -3,8 +3,8 @@ import Ecosistema.Ambiente;
 import Ecosistema.Eventos;
 
 public class ControladorSimulacion {
-    private simulacion simulation;
-    private simulacion.simulacion.CustomModel customModel;
+    private Simulacion simulation;
+    private Simulacion.simulacion.CustomModel customModel;
     private ModeloPersonalizado modeloPersonalizado;
     private Eventos eventos; // Añadimos una instancia de Eventos
 
@@ -12,12 +12,12 @@ public class ControladorSimulacion {
         this.eventos = new Eventos(); // Inicializamos la instancia de Eventos
     }
 
-    public void setCustomModel(simulacion.simulacion.CustomModel customModel) {
+    public void setCustomModel(Simulacion.simulacion.CustomModel customModel) {
         this.customModel = customModel;
     }
 
     public void handleConfigureSimulation(String initialConditions, int duration, Ambiente ambiente) {
-        this.simulation = new simulacion(initialConditions, duration, ambiente);
+        this.simulation = new Simulacion(initialConditions, duration, ambiente);
         System.out.println("Simulation configured with initial conditions: " + initialConditions + " and duration: " + duration);
     }
 
@@ -57,7 +57,7 @@ public class ControladorSimulacion {
 
     public void handleStartSimulation() {
         if (simulation == null) {
-            simulation = new simulacion(); // Assuming Simulation is your simulation class
+            simulation = new Simulacion(); // Assuming Simulation is your simulation class
         }
         if (!simulation.isRunning()) {
             simulation.start();

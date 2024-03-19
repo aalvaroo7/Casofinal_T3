@@ -1,39 +1,39 @@
 package simulacion;
-
+import Ecosistema.Eventos;
 import Ecosistema.Ambiente;
-
-public class simulacion {
-
+public class Simulacion {
+    private Eventos eventos; // Declare eventos here
+    private CustomModel customModel;
+    private ModeloPersonalizado modeloPersonalizado;
+    private boolean running;
+    private Ambiente ambiente;
 
     public interface CustomModel {
         void executeModel(Ambiente ambiente);
     }
-        private boolean running;
-        private Ambiente ambiente;
 
-        public simulacion(String initialConditions, int duration, Ambiente ambiente) {
-            this.ambiente = ambiente;
-            this.running = false;
-        }
+    public Simulacion(String initialConditions, int duration, Ambiente ambiente) {
+        this.ambiente = ambiente;
+        this.running = false;
+    }
+    public Ambiente getAmbiente() {
+        return this.ambiente;
+    }
 
-        public Ambiente getAmbiente() {
-            return this.ambiente;
-        }
-        // Añade un constructor que acepta un objeto Ambiente
-        public simulacion(Ambiente ambiente) {
-            this.ambiente = ambiente;
-            this.running = false;
-        }
-
-        // Añade un setter para el ambiente
-        public void setAmbiente(Ambiente ambiente) {
-            this.ambiente = ambiente;
-        }
-    public simulacion() {
+    public Simulacion(Ambiente ambiente) {
+        this.ambiente = ambiente;
         this.running = false;
     }
 
-    public simulacion(String initialConditions, int duration) {
+    public void setAmbiente(Ambiente ambiente) {
+        this.ambiente = ambiente;
+    }
+
+    public Simulacion() {
+        this.running = false;
+    }
+
+    public Simulacion(String initialConditions, int duration) {
     }
 
     public boolean isRunning() {
@@ -51,13 +51,17 @@ public class simulacion {
     }
 
     public String getDatos() {
-        // This is just an example. You should replace this with code that
-        // generates a string containing the data of the simulation.
         return "Datos de la simulación";
     }
+
     public class ControladorSimulacion {
-        private simulacion simulation;
+        private final Eventos Eventos;
+        private Simulacion simulation;
         private ModeloPersonalizado modeloPersonalizado;
+
+        public ControladorSimulacion() {
+            this.Eventos = new Eventos();
+        }
 
         public void setModeloPersonalizado(ModeloPersonalizado modeloPersonalizado) {
             this.modeloPersonalizado = modeloPersonalizado;
@@ -70,14 +74,15 @@ public class simulacion {
                 System.out.println("No se ha configurado un modelo personalizado.");
             }
         }
+
         public void handleConfigureSimulation(String initialConditions, int duration) {
-            this.simulation = new simulacion(initialConditions, duration);
+            this.simulation = new Simulacion(initialConditions, duration);
             System.out.println("Simulation configured with initial conditions: " + initialConditions + " and duration: " + duration);
         }
 
         public void handleStartSimulation() {
             if (simulation == null) {
-                simulation = new simulacion(); // Assuming Simulation is your simulation class
+                simulation = new Simulacion();
             }
             if (!simulation.isRunning()) {
                 simulation.start();
@@ -91,12 +96,6 @@ public class simulacion {
             if (simulation != null && simulation.isRunning()) {
                 simulation.stop();
                 System.out.println("Simulation stopped.");
-
-                // Save the state of the simulation or any results it has produced
-                // This will depend on the implementation of your simulation
-                // For example:
-                // String simulationResults = simulation.getResults();
-                // registro.registrarSimulacion(simulationResults);
             } else {
                 System.out.println("No simulation is currently running.");
             }
