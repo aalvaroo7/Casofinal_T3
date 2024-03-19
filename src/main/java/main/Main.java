@@ -84,7 +84,6 @@ public class Main {
                     controladorSimulacion.handleStartSimulation();
                     break;
                 case 5:
-                case 5:
                     controladorSimulacion.visualizarDatos();
                     eventos.eventoAleatorio(ambiente); // Ejecutamos un evento aleatorio
                     for (Organismo animal : ambiente.organismos) { // Mostramos los animales y cómo les afectan los eventos
