@@ -1,15 +1,52 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    private Autenticacion autenticacion;
+    private Registro registro;
+
+    public InterfazUsuario(Autenticacion autenticacion, Registro registro) {
+        this.autenticacion = autenticacion;
+        this.registro = registro;
+    }
+
+    public void iniciarSesion(String nombre, String contraseña) {
+        // Solicitar al usuario que introduzca su nombre y contraseña
+        // Utilizar el sistema de autenticación para verificar las credenciales del usuario
+        // Si las credenciales son correctas, permitir al usuario acceder al sistema
+        // Si las credenciales no son correctas, mostrar un mensaje de error
+        if (autenticacion.autenticarUsuario(nombre, contraseña)) {
+            System.out.println("User authenticated successfully.");
+        } else {
+            System.out.println("User authentication failed.");
+        }
+    }
+
+    public void configurarSimulacion() {
+        // Permitir al usuario configurar los parámetros de la simulación
+        // Guardar la configuración de la simulación en el sistema de registro
+        // This is just a placeholder, replace it with your actual code
+        System.out.println("Configuring the simulation...");
+    }
+
+    public void iniciarSimulacion(String nombre, String contraseña) {
+        if (autenticacion.autenticarUsuario(nombre, contraseña)) {
+            // Start the simulation with the user-provided configuration
+            // This is just a placeholder, replace it with your actual simulation code
+            System.out.println("Starting the simulation...");
+
+            // After the simulation is completed, save the results to the Registro instance
+            // This is just a placeholder, replace it with your actual code to save the results
+            String detallesSimulacion = "Simulation details...";
+            registro.registrarSimulacion(detallesSimulacion);
+
+            System.out.println("Simulation completed and results saved.");
+        } else {
+            System.out.println("User authentication failed. Cannot start the simulation.");
         }
     }
 }
