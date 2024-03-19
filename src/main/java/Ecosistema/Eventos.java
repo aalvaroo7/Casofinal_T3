@@ -17,7 +17,8 @@ public class Eventos {
                     // Desastre natural
                     System.out.println("Ha ocurrido un desastre natural, disminuir la población.");
                     if (!ambiente.organismos.isEmpty()) {
-                        ambiente.organismos.remove(0); // eliminar el primer organismo de la lista
+                        Organismo organismo = ambiente.organismos.remove(0); // eliminar el primer organismo de la lista
+                        organismo.danos = true; // el organismo ha sufrido daños
                     }
                     break;
                 case 1:

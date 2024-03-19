@@ -7,8 +7,41 @@ import java.util.Random;
 
 public class Animal extends Organismo {
     // Añade un generador de números aleatorios
-    private static Random random = new Random();
+    public static Random random = new Random();
+    private int puntosVida;
+    private boolean vivo;
+    public void luchar(Animal oponente) {
+        if (random.nextBoolean()) {
+            System.out.println(this.nombre + " ha ganado la lucha contra " + oponente.nombre);
+            oponente.puntosVida -= 10;
+            if (oponente.puntosVida <= 0) {
+                oponente.morir();
+            }
+        } else {
+            System.out.println(this.nombre + " ha perdido la lucha contra " + oponente.nombre);
+            this.puntosVida -= 10;
+            if (this.puntosVida <= 0) {
+                this.morir();
+            }
+        }
+    }
 
+    public void morir() {
+        this.vivo = false;
+        System.out.println(this.nombre + " ha muerto.");
+    }
+
+    public boolean estaVivo() {
+        return this.vivo;
+    }
+    public void huir(Animal perseguidor) {
+        if (random.nextBoolean()) {
+            System.out.println(this.nombre + " ha huido exitosamente de " + perseguidor.nombre);
+        } else {
+            System.out.println(this.nombre + " ha fallado al huir de " + perseguidor.nombre);
+            this.luchar(perseguidor);
+        }
+    }
     // Añade una lista de nombres de animales
     private static List<String> nombresAnimales = Arrays.asList("León", "Tigre", "Elefante", "Jirafa", "Hipopótamo", "Cebra", "Oso", "Lobo", "Zorro", "Canguro");
 

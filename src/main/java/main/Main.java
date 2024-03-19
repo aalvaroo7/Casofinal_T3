@@ -1,18 +1,30 @@
 package main;
-
 import java.util.Scanner;
+import java.util.Random;
+import Analisis_avanzado.Analisisavanzado;
+import Ecosistema.*;
+import Ecosistema.Animal;
+import Ecosistema.Ambiente;
+import Ecosistema.Eventos;
 import Ecosistema.Organismo;
 import Gestion_usuarios_ysimulciones.Autenticacion;
 import Gestion_usuarios_ysimulciones.Registro;
 import Gestion_usuarios_ysimulciones.Usuario;
 import simulacion.ControladorSimulacion;
-import Ecosistema.Ambiente;
-import Ecosistema.Eventos;
-import Ecosistema.Animal;
-import Analisis_avanzado.Analisisavanzado;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import static Ecosistema.Animal.random;
+
 
 public class Main {
     public static void main(String[] args) {
+        runSimulation();
+        System.exit(0);
+    }
+
+    public static void runSimulation() {
         Autenticacion autenticacion = new Autenticacion();
         Registro registro = new Registro("registro.txt");
         ControladorSimulacion controladorSimulacion = new ControladorSimulacion();
@@ -63,9 +75,9 @@ public class Main {
                     System.out.print("Ingrese las condiciones iniciales de la simulación: ");
                     String condicionesIniciales = scanner.nextLine();
                     System.out.print("Ingrese la duración de la simulación: ");
-                    int duracion = scanner.nextInt();
+                    int duration = scanner.nextInt();
                     scanner.nextLine(); // consume newline
-                    controladorSimulacion.handleConfigureSimulation(condicionesIniciales, duracion);
+                    controladorSimulacion.handleConfigureSimulation(condicionesIniciales, duration, ambiente);
                     System.out.println("Simulación configurada.");
                     break;
                 case 4:
@@ -77,11 +89,29 @@ public class Main {
                     for (Organismo animal : ambiente.organismos) { // Mostramos los animales y cómo les afectan los eventos
                         System.out.println("Animal: " + animal.toString());
                     }
-                    break; // Añadido break que faltaba
+                    if (ambiente.organismos.size() >= 2) {
+                        Animal animal1 = (Animal) ambiente.organismos.get(random.nextInt(ambiente.organismos.size()));
+                        Animal animal2;
+                        do {
+                            animal2 = (Animal) ambiente.organismos.get(random.nextInt(ambiente.organismos.size()));
+                        } while (animal1 == animal2); // Aseguramos que no seleccionamos el mismo animal dos veces
+
+                        // Hacemos que los animales interactúen entre sí
+                        if (random.nextBoolean()) {
+                            animal1.luchar(animal2);
+                        } else {
+                            animal1.huir(animal2);
+                        }
+                    }
+
+                    // Mostramos los animales y cómo les afectan los eventos
+                    for (Organismo animal : ambiente.organismos) {
+                        System.out.println("Animal: " + animal.toString());
+                    }
+                    break;
                 case 6:
                     System.out.println("Saliendo...");
-                    scanner.close();
-                    System.exit(0);
+                    return;
                 default:
                     System.out.println("Opción no válida.");
             }
