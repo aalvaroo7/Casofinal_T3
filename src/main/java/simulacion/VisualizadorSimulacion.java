@@ -1,13 +1,14 @@
 package simulacion;
-// JavaFX imports
+
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class VisualizadorSimulacion extends Application {
+public class SimulationView extends Application {
     private SimulationController controller;
 
-    public VisualizadorSimulacion() {
+    public SimulationView() {
         this.controller = new SimulationController();
     }
 
@@ -17,8 +18,11 @@ public class VisualizadorSimulacion extends Application {
         // For example, you might create a form for configuring simulations
         // and buttons for controlling them
 
+        // Create a root node for the scene
+        Pane root = new Pane();
+
         // Set the scene on the primary stage and show it
-        primaryStage.setScene(new Scene(/* your root node here */));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
