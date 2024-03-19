@@ -55,9 +55,13 @@ public class Main {
                     }
                     break;
                 case 3:
-                    // Aquí deberías solicitar al usuario los parámetros de la simulación
-                    // y luego llamar a controladorSimulacion.handleConfigureSimulation con esos parámetros
-                    System.out.println("Configurando simulación...");
+                    System.out.print("Ingrese las condiciones iniciales de la simulación: ");
+                    String condicionesIniciales = scanner.nextLine();
+                    System.out.print("Ingrese la duración de la simulación: ");
+                    int duracion = scanner.nextInt();
+                    scanner.nextLine(); // consume newline
+                    controladorSimulacion.handleConfigureSimulation(condicionesIniciales, duracion);
+                    System.out.println("Simulación configurada.");
                     break;
                 case 4:
                     controladorSimulacion.handleStartSimulation();

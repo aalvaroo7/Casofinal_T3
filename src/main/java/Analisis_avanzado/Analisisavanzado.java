@@ -8,10 +8,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.chart.plot.PlotOrientation;
 
 public abstract class Analisisavanzado {
-    // Herramientas avanzadas para resolver problemas específicos
+
     public abstract void resolverProblemasEspecificos();
 
-    // Métodos para visualizar los datos de la simulación
+
     public void visualizarDatos(DefaultCategoryDataset dataset) {
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Simulación",

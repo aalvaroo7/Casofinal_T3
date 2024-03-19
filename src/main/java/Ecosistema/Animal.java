@@ -1,7 +1,22 @@
 package Ecosistema;
+import java.util.Random;
+
 class Animal extends Organismo {
+    // Añade un generador de números aleatorios
+    private static Random random = new Random();
+
     Animal(String posicion, int salud, int edad, boolean estadoReproductivo) {
         super(posicion, salud, edad, estadoReproductivo);
+    }
+
+    // Método para crear un animal aleatorio
+    public static Animal crearAnimalAleatorio() {
+        String posicion = "Posicion" + random.nextInt(100); // Genera una posición aleatoria
+        int salud = random.nextInt(100); // Genera una salud aleatoria
+        int edad = random.nextInt(100); // Genera una edad aleatoria
+        boolean estadoReproductivo = random.nextBoolean(); // Genera un estado reproductivo aleatorio
+
+        return new Animal(posicion, salud, edad, estadoReproductivo);
     }
 
     void competirPorRecursos(Ambiente ambiente) {
@@ -37,5 +52,3 @@ class Animal extends Organismo {
         }
     }
 }
-
-
