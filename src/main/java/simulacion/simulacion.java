@@ -13,11 +13,11 @@ public class simulacion {
 
     public void start() {
         this.running = true;
-        System.out.println("Simulation started.");
+        System.out.println("comienzo simulacion.");
     }
 
     public void stop() {
         this.running = false;
-        System.out.println("Simulation stopped.");
+        System.out.println("fin simulacion.");
     }
 }
