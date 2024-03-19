@@ -1,5 +1,4 @@
-import org.jfree.chart.*;
-import org.jfree.data.category.DefaultCategoryDataset;
+package Analisis_avanzado;
 import java.io.File;
 import java.io.IOException;
 
