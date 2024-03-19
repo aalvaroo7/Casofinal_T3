@@ -1,5 +1,6 @@
 package Ecosistema;
 
+import java.util.Collection;
 import java.util.List;
 
 public class Ambiente {
@@ -44,5 +45,9 @@ public class Ambiente {
                 ", terreno='" + terreno + '\'' +
                 ", recursosDisponibles=" + recursosDisponibles +
                 '}';
+    }
+
+    public Collection<Object> getOrganismos() {
+        return null;
     }
 }

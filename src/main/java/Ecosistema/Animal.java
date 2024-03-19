@@ -6,9 +6,18 @@ import java.util.List;
 import java.util.Random;
 
 public class Animal extends Organismo {
+
+    private int puntosVida;
+
+    public int getPuntosVida() {
+        return this.puntosVida;
+    }
+
+    public void setPuntosVida(int puntosVida) {
+        this.puntosVida = puntosVida;
+    }
     // Añade un generador de números aleatorios
     public static Random random = new Random();
-    private int puntosVida;
     private boolean vivo;
     public void luchar(Animal oponente) {
         if (random.nextBoolean()) {

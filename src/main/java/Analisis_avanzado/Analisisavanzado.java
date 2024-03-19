@@ -1,40 +1,31 @@
 package Analisis_avanzado;
-import java.io.File;
-import java.io.IOException;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.chart.plot.PlotOrientation;
+import Ecosistema.Ambiente;
+import Ecosistema.Organismo;
 
-public abstract class Analisisavanzado {
+    public abstract class Analisisavanzado {
+        // ...
 
-    public abstract void resolverProblemasEspecificos();
+        public void buscarEquilibrioEco(Ambiente ambiente) {
+            int recursos = ambiente.getRecursosDisponibles();
+            int organismos = ambiente.getOrganismos().size();
+            int saludTotal = 0;
+            for (Organismo organismo : ambiente.getOrganismos()) {
+                saludTotal += organismo.getSalud();
+            }
+            int saludPromedio = saludTotal / organismos;
 
-
-    public void visualizarDatos(DefaultCategoryDataset dataset) {
-        JFreeChart barChart = ChartFactory.createBarChart(
-                "Simulación",
-                "Categoría",
-                "Puntuación",
-                dataset,
-                PlotOrientation.VERTICAL,
-                true, true, false);
-
-        int width = 640;
-        int height = 480;
-        File barChartFile = new File("BarChart.jpeg");
-        try {
-            ChartUtilities.saveChartAsJPEG(barChartFile, barChart, width, height);
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (recursos >= organismos && saludPromedio > 50) {
+                System.out.println("El ambiente está en equilibrio.");
+            } else {
+                System.out.println("El ambiente no está en equilibrio.");
+            }
         }
-    }
 
-    // Permitir que los investigadores introduzcan sus propios modelos y funciones
-    public void integrarNuevasFunciones() {
-        // Implementación de la integración de nuevas funciones
-        System.out.println("Integrando nuevas funciones...");
-        // Add your function integration code here
-    }
+        public void evaluarEstrategiaConservacion(Ambiente ambiente, EstrategiaConservacion estrategia) {
+            // Aplicar la estrategia de conservación
+            estrategia.aplicar(ambiente);
+
+            // Evaluar el equilibrio ecológico después de aplicar la estrategia
+            buscarEquilibrioEco(ambiente);
+        }
 }
