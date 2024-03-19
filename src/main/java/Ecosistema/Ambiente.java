@@ -2,13 +2,13 @@ package Ecosistema;
 
 import java.util.List;
 
-class Ambiente {
+ public class Ambiente {
     String clima;
     String terreno;
     int recursosDisponibles;
     List<Organismo> organismos; // Añadido para mantener una lista de organismos en el ambiente
 
-    Ambiente(String clima, String terreno, int recursosDisponibles, List<Organismo> organismos) {
+    public Ambiente(String clima, String terreno, int recursosDisponibles, List<Organismo> organismos) {
         this.clima = clima;
         this.terreno = terreno;
         this.recursosDisponibles = recursosDisponibles;
