@@ -17,6 +17,7 @@ public class Main {
         Registro registro = new Registro("registro.txt");
         ControladorSimulacion controladorSimulacion = new ControladorSimulacion();
         Ambiente ambiente = new Ambiente("Clima", "Terreno", 100, Animal.generarAnimalesAleatorios(10)); // Generamos 10 animales aleatorios
+        controladorSimulacion.handleConfigureSimulation("Initial Conditions", 10, ambiente);
         Eventos eventos = new Eventos(); // Añadimos una instancia de Eventos
         Analisisavanzado analisisAvanzado = new Analisisavanzado() {
             @Override
