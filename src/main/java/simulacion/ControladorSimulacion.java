@@ -1,17 +1,18 @@
 package simulacion;
+
 public class ControladorSimulacion {
-    private Simulation simulation;
+    private simulacion simulation;
 
     public void handleConfigureSimulation(String initialConditions, int duration) {
-        // Create a new instance of your simulation class with the provided configuration
-        this.simulation = new Simulation(initialConditions, duration);
-
+        this.simulation = new simulacion(initialConditions, duration);
         System.out.println("Simulation configured with initial conditions: " + initialConditions + " and duration: " + duration);
     }
 
     public void handleStartSimulation() {
-        if (simulation == null || !simulation.isRunning()) {
-            simulation = new Simulation(); // Assuming Simulation is your simulation class
+        if (simulation == null) {
+            simulation = new simulacion(); // Assuming Simulation is your simulation class
+        }
+        if (!simulation.isRunning()) {
             simulation.start();
             System.out.println("Simulation started.");
         } else {
