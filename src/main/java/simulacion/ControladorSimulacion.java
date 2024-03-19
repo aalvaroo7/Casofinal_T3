@@ -1,18 +1,24 @@
 package simulacion;
 import Ecosistema.Ambiente;
-import Ecosistema.Organismo;
-import Ecosistema.Animal;
-
+import Ecosistema.Eventos;
 public class ControladorSimulacion {
     private simulacion simulation;
     private ModeloPersonalizado modeloPersonalizado;
+    private Eventos eventos; // Añadimos una instancia de Eventos
+
+    public ControladorSimulacion() {
+        this.eventos = new Eventos(); // Inicializamos la instancia de Eventos
+    }
+
     public void handleConfigureSimulation(String initialConditions, int duration, Ambiente ambiente) {
         this.simulation = new simulacion(initialConditions, duration, ambiente);
         System.out.println("Simulation configured with initial conditions: " + initialConditions + " and duration: " + duration);
     }
+
     public void setModeloPersonalizado(ModeloPersonalizado modeloPersonalizado) {
         this.modeloPersonalizado = modeloPersonalizado;
     }
+
     public void ejecutarModeloPersonalizado() {
         if (modeloPersonalizado != null) {
             modeloPersonalizado.ejecutarModelo();
@@ -21,33 +27,10 @@ public class ControladorSimulacion {
         }
     }
 
-    public void handleConfigureSimulation(String initialConditions, int duration) {
-        this.simulation = new simulacion(initialConditions, duration);
-        System.out.println("Simulation configured with initial conditions: " + initialConditions + " and duration: " + duration);
-    }
-
-    public void handleStartSimulation() {
-        if (simulation == null) {
-            simulation = new simulacion(); // Assuming Simulation is your simulation class
-        }
-        if (!simulation.isRunning()) {
-            simulation.start();
-            System.out.println("Simulation started.");
-        } else {
-            System.out.println("A simulation is already running.");
-        }
-    }
-
     public void handleStopSimulation() {
         if (simulation != null && simulation.isRunning()) {
             simulation.stop();
             System.out.println("Simulation stopped.");
-
-            // Save the state of the simulation or any results it has produced
-            // This will depend on the implementation of your simulation
-            // For example:
-            // String simulationResults = simulation.getResults();
-            // registro.registrarSimulacion(simulationResults);
         } else {
             System.out.println("No simulation is currently running.");
         }
@@ -63,6 +46,19 @@ public class ControladorSimulacion {
             }
         } else {
             System.out.println("No simulation has been configured. Please configure a simulation before visualizing its data.");
+        }
+    }
+
+    public void handleStartSimulation() {
+        if (simulation == null) {
+            simulation = new simulacion(); // Assuming Simulation is your simulation class
+        }
+        if (!simulation.isRunning()) {
+            simulation.start();
+            System.out.println("Simulation started.");
+            eventos.eventoAleatorio(simulation.getAmbiente()); // Llamamos al método eventoAleatorio cuando la simulación comienza
+        } else {
+            System.out.println("A simulation is already running.");
         }
     }
 }
