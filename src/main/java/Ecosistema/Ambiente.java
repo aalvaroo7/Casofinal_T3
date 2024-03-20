@@ -1,6 +1,5 @@
 package Ecosistema;
 
-import java.util.Collection;
 import java.util.List;
 
 public class Ambiente {
@@ -38,16 +37,19 @@ public class Ambiente {
         System.out.println("Recursos disponibles: " + this.recursosDisponibles);
     }
 
-    @Override
+    public int getRecursosDisponibles() {
+        return this.recursosDisponibles;
+    }
+
+    public List<Organismo> getOrganismos() {
+        return this.organismos;
+    }
+
     public String toString() {
         return "Ambiente{" +
                 "clima='" + clima + '\'' +
                 ", terreno='" + terreno + '\'' +
                 ", recursosDisponibles=" + recursosDisponibles +
                 '}';
-    }
-
-    public Collection<Organismo> getOrganismos() {
-        return this.organismos;
     }
 }

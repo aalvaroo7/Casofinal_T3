@@ -3,8 +3,6 @@ import Ecosistema.Ambiente;
 import Ecosistema.Organismo;
 
     public abstract class Analisisavanzado {
-        // ...
-
         public void buscarEquilibrioEco(Ambiente ambiente) {
             int recursos = ambiente.getRecursosDisponibles();
             int organismos = ambiente.getOrganismos().size();
